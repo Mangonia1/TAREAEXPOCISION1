@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-8 offset-md-2">
+        
+          <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"  novalidate>
+              <div class="form-group">
+               
+                  <input placeholder="Nombre.." type="text" class="form-control" name="fName" [(ngModel)]="model.fName" #fName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fName.invalid }" required />
+                  <div *ngIf="f.submitted && fName.invalid" class="invalid-feedback">
+                      <div *ngIf="fName.errors.required">Nombre requerido</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  
+                  <input placeholder="Apellido Paterno.." type="text" class="form-control" name="fP" [(ngModel)]="model.fP" #fP="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fP.invalid }" required />
+                  <div *ngIf="f.submitted && fP.invalid" class="invalid-feedback">
+                      <div *ngIf="fP.errors.required">Apellido Paterno requerido</div>
+                  </div>
+              </div>
+              <div class="form-group">
+                
+                <input placeholder="Apellido Materno.." type="text" class="form-control" name="fM" [(ngModel)]="model.fM" #fM="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fM.invalid }" required />
+                <div *ngIf="f.submitted && fM.invalid" class="invalid-feedback">
+                    <div *ngIf="fM.errors.required">Apellido Materno requerido</div>
+                </div>
+            </div>
+            <div class="form-group">
+             
+             <!-- 
+               <input placeholder="Sexo.." type="text" class="form-control" name="fSex" [(ngModel)]="model.fSex" #fSex="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fSex.invalid }" required />
+              <div *ngIf="f.submitted && fSex.invalid" class="invalid-feedback">
+                  <div *ngIf="fSex.errors.required">Sexo requerido</div>
+              </div>
+             --> 
+             <div class="select">
+              <select [(ngModel)]="model.fSex" name="fSex" class="form-control">
+                  <option *ngFor="let e of options">{{e}}</option>    
+              </select>
+          </div>
+          </div>
+          <div class="form-group">
+           
+            <input inputmode="numeric" pattern="[0-9]*" digitOnly placeholder="Edad.." type="text" class="form-control" name="fAge" [(ngModel)]="model.fAge" #fAge="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fAge.invalid }" required />
+            <div *ngIf="f.submitted && fAge.invalid" class="invalid-feedback">
+                <div *ngIf="fAge.errors.required">Edad requerida</div>
+            </div>
+        </div>
+              
+              <div class="form-group">
+               
+                  <input placeholder="Email.." type="text" class="form-control" name="fEmail" [(ngModel)]="model.fEmail" #fEmail="ngModel" [ngClass]="{ 'is-invalid': f.submitted && fEmail.invalid }" required email />
+                  <div *ngIf="f.submitted && fEmail.invalid" class="invalid-feedback">
+                      <div *ngIf="fEmail.errors.required">Email requerido</div>
+                      <div *ngIf="fEmail.errors.email">Email no valido</div>
+                  </div>
+              </div>
+
+              
+
+              <div class="form-group">
+                  <button class="btn btn-primary">Register</button>
+              </div>
+
+          </form>
+      </div>
+  </div>
+</div>
+
+  
+
